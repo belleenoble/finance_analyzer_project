@@ -1,0 +1,32 @@
+/* Global page styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f7f7f7;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #222;
+}
+
+/* Form spacing */
+form {
+  margin-bottom: 1rem;
+}
+
+/* Button styling */
+button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+/* Response box */
+pre {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}

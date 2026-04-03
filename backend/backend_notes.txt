@@ -1,0 +1,74 @@
+Python Libraries required for the backend of the finance
+analyzer application. 
+
+== Run the Code ==
+
+1. Create Virtual Enviroment
+        python -m venv venv 
+
+2. Activate It -> ALWAYS (AFTER U CREATE ONLY ONCE)
+        venv\Scripts\activate
+
+3. Install Requirements -> ONCE ONLY
+        pip install -r requirements.txt
+
+4. Run the Backend
+        uvicorn app.main:app --reload
+
+5. Open https://127.0.0.1:8000
+        http://127.0.0.1:8000/health
+
+
+== Libraries ==
+FastAPI: Web framework for building APIs with Python
+Uvicorn: ASGI (Asynchronous Server Gateway Interface) server for running FastAPI applications
+Python-multipart: Library for handling multipart/form-data, which is used for file uploads in FastAPI
+Pandas: Data manipulation and analysis library, used for handling and analyzing financial data
+
+=== ROUTE NOTES ===
+
+-----> CORS <-----
+*** Gives permission for frontend to interact with backend
+an origin is the combination of : protocol + domain + port
+                                the urls for each backend and front end are orgins
+CORS middleware:
+from fastapi.middleware.cors import CORSMiddleware -> allows requests from react app.
+
+-----> HEALTH CHECK ROUTE <-----
+
+This is another GET endpoint
+It is commonly used to confirm the backend is alive
+@app.get("/health")
+def health_check():
+    """
+    This function runs when someone visits:
+    http://127.0.0.1:8000/health
+    """
+
+    return {"status": "ok"}
+-> -------------------- <-
+
+----> FILE UPLOAD ROUTE <----
+
+@app.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+
+    - This endpoint recieves a file from the frontend.
+
+    Breakdown of the parameter:
+        - file = variable name we will use inside the function
+        - UploadFile = special FastAPI type for uploaded files
+        - File(...) = tells FastAPI this input must come from a file upload (...) MEANS ITS required
+    
+    return {
+        "filename": file.filename, -> temp
+        "message": "File recieved successfully"
+    }
+-> -------------------- <-
+
+== Resources ==
+FastAPI initalization-> https://fastapi.tiangolo.com/tutorial/first-steps/
+                        https://realpython.com/api-integration-in-python/
+
+API Endpoints ->        https://noloco.io/blog/types-of-api-endpoints-and-customizing-a-request
+

@@ -1,0 +1,9 @@
+## For this project, I am trying to upload files, and keep different
+versions of the project to see my progress. 
+
+Resource:https://git-scm.com/book/en/v2
+
+-> Recommended: Not use github on the brower but use a [ local development + git ]
+
+***Local Development = writing code on my computer
+***Git = tracking and saving changes from my computer to Github (automated?)

@@ -1,0 +1,43 @@
+Front end of this project is being used with React:
+
+======= Front End Folder Layout ======
+-> After Running VITE
+    frontend |
+        node_modules ->all installed packages (react) DONT TOUCH
+        public
+        src 
+        index.html -> main html file react interacts with
+        package.json -> project configuration + dependencies
+        package-lock.json
+        cite.config.js
+
+                            ======= NOTES / Background  ========
+
+- React is a JavaScript Library -> meaning we don't have to install an applicaiton, vs code works fine. 
+- To use react, you create a react project folder.
+- React will help build UI, manage data, and update the screen dynamically
+-
+  VITE v8.0.3  ready in 386 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+                                ======= Resources ========
+
+-> UploadForm.jsx | https://claritydev.net/blog/react-hook-form-multipart-form-data-file-uploads
+
+                            ======= Code Explainations ========
+
+--------------UploadForm.jsx--------------
+variables: useState
+functions (handleSubmit, handleFileChange)
+return UI (in JS)
+
+[useState  -> hook (special function featured in react)                       ]
+[             Stores the selected files / backend response                    ]
+[handleFileChange -> event handler function that is triggered by users file   ]
+[handleSubmit -> triggered when the user clicks upload                        ]
+[                creates FormData   ]
+
+--------------index.css--------------
+https://www.geeksforgeeks.org/css/css-cheat-sheet-a-basic-guide-to-css/

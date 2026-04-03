@@ -1,0 +1,170 @@
+Project: Smart Expense Insight Dashboard
+
+Day-by-day build plan for the Finance Project:
+    Assume: 
+        - Python Backend
+        - Simple UI
+        - CSV Transaction Input
+        - Anomaly Dectection
+        - Dashboard/Summary
+        - Docker as a later polish step!
+
+==== DAY ONE: Define Scope + Set up Project ====
+
+Goal: Make the project small, clearm and finishable.
+
+Build:
+    - Project Folder Structure
+    - Python Virtual Enviroment
+    - GitHub Repo
+    - BAsic FastAPI or Flask App
+    - one sample CSV file 
+
+Deciede your exact scope:
+    - CSV Upload
+    - Category Breakdown
+    - anomaly Dectection
+    - subscription Dectection
+    - summary output
+
+Delieverable by the end of the day:
+    -server runs
+    -sample route works
+    -repo initialized
+
+==== DAY TWO: CSV Parsing + Transaction Cleaning ==== 
+Goal: Get usable Data into your system
+
+Build:
+
+    -CSV Upload or file reading
+    -Parsing for:
+        -date
+        -description/merchant
+        -amount
+    -cleaning logic:
+        -handle missing values
+        -standardize text
+        -convert dates and amounts
+
+    Focus on making the pipline reliable
+
+Deliverable:
+    -Upload CSV
+    -Return clearned Transaction Table or JSON preview
+
+==== DAY 3: Spending Categorizaiton ====
+Goal: Turn Raw Transactions into meaningful categories.
+
+Build:
+
+-Rule-Based Categorizer using Keywords
+-Category Examples:
+    -groceries -> |Safeway|
+    -Rent 
+    -transportation -> |UBER|
+    -entertainment
+    -subscriptions -> |Netflix|
+    -dining out
+
+Deliverable:
+    -every transaction gets a Category
+    -catefory totals are computed
+
+=== DAY 4: ANomaly Dection ==== !!CORE INTELLEGENCE FEATURE OF PROJECT!!
+Goal: Add the feature that makes the project stand out.
+
+Build:
+
+    - Detect unusual large expenses
+    - detect unusual spending in a Category
+    - detect new merchants not seenbefore
+
+    Keep methods simple:
+        - compare transaction against category average
+        -use z-score or threhold rules
+        -mark suspicious entries
+
+         Examples:
+            "Dining Expeneses is 2.5x above average."
+            "First time spending at this merchant"
+            "Entertainment spending is unusally high this week."
+
+Delieverable:
+    - anomolies are flagged and explained.
+
+===Day 5 — Subscription detector + summary insights ===
+
+Goal: make the app feel practical and polished.
+
+Build:
+
+    -recurring payment detection
+    -identify likely subscriptions by:
+    -similar merchant names
+    -similar amounts
+    -repeated monthly timing
+
+        Add summary insights like:
+
+        -highest spending category
+        -total monthly spend
+        -number of anomalies
+        -recurring subscriptions found
+
+Deliverable by end of day:
+
+app generates useful, plain-English findings
+
+This helps a lot in demos and resume descriptions.
+
+=== Day 6: Frontend/dashboard + Docker ===
+
+Goal: Make the Project Presentable
+
+Build:
+    -Simple UI page for:
+        -CSV Upload
+        -Summary Cards
+        -Anomaly List
+        -Category totals
+    -Charts if time allows
+
+Then Dockerize the backend:
+    -create "requirements.txt"
+    -create Dockerfile
+    optionally add docker-compose.yml
+
+Deliverable:
+    -user can run app through browser
+    -Docker version starts sucessfully
+
+=== Day 7 — Testing, README, resume-ready polish ===
+
+Goal: turn the project from “code” into “portfolio asset.”
+
+Do:
+
+    test with 2–3 different CSV samples
+    fix obvious bugs
+    improve naming and comments
+    clean GitHub repo
+    write strong README with:
+    project purpose
+    features
+    tech stack
+    screenshots
+    how to run locally
+    how to run with Docker
+
+Also prepare:
+
+    2–3 resume bullet points
+    30-second interview explanation
+    one screenshot or GIF for portfolio
+
+Deliverable by end of day:
+
+    polished repo
+    usable demo
+    project description ready for resume
