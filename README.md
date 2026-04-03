@@ -18,10 +18,33 @@ This finance analyzer should help users:
 - Make results easy to review and compare across each session.
 - Allow users to understand their financial spending habits.
 
-## Setup
+## Setup and Running the Project
 1.) Clone the repository
 ```bash
-git clone https:
+git clone https://github.com/belleenoble/finance_analyzer_project.git
+
+cd finance_analyzer
+```
+2.) Setup the backend (FastAPI)
 ```bash
+cd backend
+
 python -m venv .venv
-source . 
+
+source / venv/bin/activate
+
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
+```
+The backend server should run at: http://localhost:8000
+
+3.) Setup the frontend (React)
+```bash
+cd frontend
+
+npm install
+
+npm start
+```
+The frontend server should run at: http://localhost:5173
