@@ -1,0 +1,4 @@
+Contains all the API endpoints, where "upload"
+
+so workflow would look like:
+main.py (router) -> upload.p handles the endpoint

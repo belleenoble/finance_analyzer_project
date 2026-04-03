@@ -1,0 +1,39 @@
+This is where we will have files
+regarding anomaly dectenction, 
+data processing, and calculations
+
+example: 
+=== routes ===
+# routes/upload.py
+from fastapi import APIRouter, UploadFile, File
+from app.services.anomaly_detection import analyze_transactions
+
+router = APIRouter()
+
+@router.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    result = analyze_transactions(file)
+    return result
+
+=== services ===
+
+# services/anomaly_detection.py
+
+def analyze_transactions(file):
+    # pretend logic for now
+    return {
+        "anomalies": [
+            {"amount": 500, "reason": "unusually high"}
+        ]
+    }
+
+=== schemas ===
+# schemas/transaction.py
+from pydantic import BaseModel
+
+class Transaction(BaseModel):
+    date: str
+    amount: float
+    category: str
+
+this will define what a transation is , what the api expects and what it will return. 

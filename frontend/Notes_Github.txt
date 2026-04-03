@@ -7,3 +7,19 @@ Resource:https://git-scm.com/book/en/v2
 
 ***Local Development = writing code on my computer
 ***Git = tracking and saving changes from my computer to Github (automated?)
+
+
+notes: 
+added git to terminal (already activated)
+
+now adding git we need to connect the folder to github repo
+
+======================
+
+Workflow:
+
+git add .
+git commit -m "describe what you added / version / date
+git push 
+
+git pull (gets latest changes from Github)

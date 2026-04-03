@@ -59,3 +59,6 @@ async def upload_file(file: UploadFile = File(...)):
         "filename": file.filename,
         "message": "File recieved successfully!"
     }
+
+# note for later: main.py becomes the entry point + router manager 
+# when we implement the different routes as seperate files.
