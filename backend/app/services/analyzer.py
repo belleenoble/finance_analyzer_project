@@ -9,7 +9,7 @@
 #3)Breakdown by Month
 
 
-from app.services.storage import transactions_db
+from .storage import transactions_db
 
 #Function 1 - Overall Summary
 def get_summary():

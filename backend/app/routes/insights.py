@@ -3,7 +3,7 @@
 #Three endpoints in this file for the three functions in analyzer
 
 from fastapi import APIRouter
-from app.services import analyzer #importing analyzer.py
+from ..services import analyzer #importing analyzer.py
 
 router = APIRouter()
 
