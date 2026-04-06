@@ -23,3 +23,114 @@ git commit -m "describe what you added / version / date
 git push 
 
 git pull (gets latest changes from Github)
+
+
+
+# ---FUNCTION 2: Breakdown by Category---
+def get_by_category():
+
+    if not transactions_db:
+        return {"message": "No transactions yet"}
+
+    # Empty dict to store running totals per category
+    category_totals = {}
+
+    for t in transactions_db:
+        category = t["category"]   # e.g. "Food"
+        amount = t["amount"]       # e.g. -5.50
+
+        # If we haven't seen this category yet, start it at 0
+        if category not in category_totals:
+            category_totals[category] = 0
+
+        # Add this transaction's amount to that category's running total
+        category_totals[category] += amount
+
+    # category_totals now looks like:
+    # {"Food": -120.50, "Transport": -45.00, "Income": 2000.0}
+
+    # Convert that dict into a list of dicts for cleaner output
+    breakdown = []
+    for category, total in category_totals.items():
+        breakdown.append({
+            "category": category,
+            "total": round(total, 2)   # round to 2 decimal places
+        })
+
+    # Sort so biggest spending (most negative) shows first
+    breakdown.sort(key=lambda x: x["total"])
+
+    return {"category_breakdown": breakdown}
+
+
+# ---FUNCTION 3: Breakdown by Month---
+def get_by_month():
+
+    if not transactions_db:
+        return {"message": "No transactions yet"}
+
+    month_totals = {}
+
+    for t in transactions_db:
+
+        # date looks like "2024-01-15"
+        # splitting by "-" gives ["2024", "01", "15"]
+        parts = t["date"].split("-")
+
+        # grab just year and month → "2024-01"
+        month = parts[0] + "-" + parts[1]
+
+        amount = t["amount"]
+
+        # Same pattern as category — start at 0 if new
+        if month not in month_totals:
+            month_totals[month] = 0
+
+        month_totals[month] += amount
+
+    # Convert to list of dicts
+    breakdown = []
+    for month, total in month_totals.items():
+        breakdown.append({
+            "month": month,
+            "total": round(total, 2)
+        })
+
+    # Sort chronologically — "2024-01" comes before "2024-02" etc
+    breakdown.sort(key=lambda x: x["month"])
+
+    return {"monthly_breakdown": breakdown}
+
+    insights.py is the simplest file — it just calls the analyzer functions and returns the results:
+python# routes/insights.py
+
+# This route file has ONE job:
+# Receive a request → call the right analyzer function → return the result
+# All the actual math lives in analyzer.py, not here
+
+from fastapi import APIRouter
+from app.services import analyzer  # import our analyzer service
+
+router = APIRouter()
+
+
+# ---ENDPOINT 1: Overall Summary---
+# GET /api/insights/summary
+@router.get("/summary")
+def get_summary():
+    # Just calls the analyzer and returns whatever it gives back
+    return analyzer.get_summary()
+
+
+# ---ENDPOINT 2: Category Breakdown---
+# GET /api/insights/categories
+@router.get("/categories")
+def get_categories():
+    return analyzer.get_by_category()
+
+
+# ---ENDPOINT 3: Monthly Breakdown---
+# GET /api/insights/monthly
+@router.get("/monthly")
+def get_monthly():
+    return analyzer.get_by_month()

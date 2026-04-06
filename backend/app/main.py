@@ -17,12 +17,15 @@ Note: React frontend and FastAPI backend run on different ports:
 Run the Code: CHECK NOTES
 
 Author: Belle Noble
-Last Updated: 4/2/26
+Last Updated: 4/3/26
 '''
 
 # Imports FastAPI from the fastapi library.
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+
+# imports the router frmo each route file -> its all brought together here!
+from app.routes import upload, transactions, insights, anomalies
 
 print("Main.py is loading")
 
@@ -51,14 +54,18 @@ def read_root ():
 def health_check():
     return{"status": "Okay"}
 
-
-# Important: File Upload creates a POST endpoint (refer back to notes)
-@app.post("/upload")
-async def upload_file(file: UploadFile = File(...)):
-    return{
-        "filename": file.filename,
-        "message": "File recieved successfully!"
-    }
-
 # note for later: main.py becomes the entry point + router manager 
 # when we implement the different routes as seperate files.
+
+
+#now that we are implementing different file routers, each route file is registered with a prefix
+#*prefix = "api/upload" means every endpoint inside upload.py
+
+#-> we are making it so that when you call each route, it takes all endpoints within 1 route file
+
+
+
+app.include_router(upload.router,       prefix="/api/upload",       tags=["Upload"])
+# app.include_router(transactions.router, prefix="/api/transaction",  tags=["Transactions"])
+# app.include_router(insights.router,     prefix="/api/insights",     tags=["Insights"])
+# app.include_router(anomalies.router,    prefix="/api/anomalies",    tags=["Anomalies"])
