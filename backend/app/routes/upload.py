@@ -16,6 +16,8 @@ router = APIRouter() #creates router object (where the main.py should imoprt)
 @router.post("/")
 async def upload_file(file: UploadFile = File(...)):
 
+    transactions_db.clear() #wipes old data, before adding new data
+
     parsed = await csv_parser.parse_csv(file) # gives file to parser service then returns clean list of transcaction dictionary
 
     #adds every parsed transation into a shared storage list

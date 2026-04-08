@@ -14,7 +14,14 @@ async def parse_csv(file: object) -> list:
 
     #each row becomes a dict
     #example -> {"date": "2024-01-13", "description": "starbuks"}
-    transactions = [row for row in reader]
+    transactions = []
+    for row in reader:
+        transactions.append({
+            "date":         row.get("date") or row.get("Date"),
+            "description":  row.get("description") or row.get("Description"),
+            "category":     row.get("category") or row.get("Category"),
+            "amount":       float(row.get("amount") or row.get("Amount") or 0),
+        })
+
 
     return transactions
-

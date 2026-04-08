@@ -66,6 +66,6 @@ def health_check():
 
 
 app.include_router(upload.router,       prefix="/api/upload",       tags=["Upload"])
-# app.include_router(transactions.router, prefix="/api/transaction",  tags=["Transactions"])
-# app.include_router(insights.router,     prefix="/api/insights",     tags=["Insights"])
-# app.include_router(anomalies.router,    prefix="/api/anomalies",    tags=["Anomalies"])
+app.include_router(transactions.router, prefix="/api/transaction",  tags=["Transactions"])
+app.include_router(insights.router,     prefix="/api/insights",     tags=["Insights"])
+app.include_router(anomalies.router,    prefix="/api/anomalies",    tags=["Anomalies"])
