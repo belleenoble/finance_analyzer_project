@@ -17,7 +17,7 @@ Note: React frontend and FastAPI backend run on different ports:
 Run the Code: CHECK NOTES
 
 Author: Belle Noble
-Last Updated: 4/3/26
+Last Updated: 4/7/26
 '''
 
 # Imports FastAPI from the fastapi library.
